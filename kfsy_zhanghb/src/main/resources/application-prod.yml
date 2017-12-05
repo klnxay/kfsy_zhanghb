@@ -1,0 +1,3 @@
+server:
+  context-path: /kfsy_zhanghb
+  port: 8099

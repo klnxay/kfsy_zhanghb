@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.common.dao.ProductDao">
+
+    
+    <resultMap id="productMap" type="product">
+        <id property="id" column="id"></id>
+        <result column="name" property="name"></result>
+        <result property="standerd" column="standerd"></result>
+        <result property="comment" column="comment"></result>
+        <result property="oldprice" column="oldprice"></result>
+        <result property="newprice" column="newprice"></result>
+        <result property="description" column="description"></result>
+        <result property="discount" column="discount"></result>
+        <result property="typeid" column="type_id"></result>
+        <result property="bratoid" column="bra_to_id"></result>
+        <result property="themsid" column="thems_id"></result>
+        <result property="drugid" column="drug_id"></result>
+        <result property="offer" column="offer"></result>
+        <result property="sum" column="sum"></result>
+        <result property="count" column="count"></result>
+        <result property="image" column="image"></result>
+        <result property="olddate" column="olddate"></result>
+        <result property="newdate" column="newdate"></result>
+        <result property="state" column="state"></result>
+        <association property="type" javaType="type">
+            <id column="id1" property="id"></id>
+            <result column="name1" property="name"></result>
+        </association>
+        <association property="brandTopics" javaType="brandTopics">
+            <id column="id2" property="id"></id>
+            <result column="name2" property="name"></result>
+        </association>
+        <association property="thems" javaType="thems">
+            <id column="id3" property="id"></id>
+            <result column="name3" property="name"></result>
+        </association>
+        <association property="drug" javaType="drug">
+            <id column="id4" property="id"></id>
+            <result column="name4" property="name"></result>
+        </association>
+
+    </resultMap>
+
+    <insert id="insert">
+        insert into t_product values(#{id},#{name},#{standerd},#{comment},#{oldprice},#{newprice},#{description},#{discount},#{typeid},#{bratoid},#{themsid},#{drugid},#{offer},#{sum},#{count},#{image},#{olddate},#{newdate},#{state})
+    </insert>
+
+    <update id="update">
+        update t_product set name = #{name},standerd = #{standerd},comment = #{comment},oldprice =#{oldprice},
+        newprice = #{newprice},description = #{description},discount = #{discount},type_id = #{typeid},
+        bra_to_id = #{bratoid},thems_id = #{themsid},drug_id = #{drugid},offer = #{offer},sum = #{sum},count = #{count},
+        image = #{image},olddate = #{olddate},newdate = #{newdate},state=#{state} where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from t_product where id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="productMap">
+        select p.*,t.id as id1,t.name as name1,b.id as id2,b.name as name2,th.id as id3,th.name as name3,d.id as id4,d.name as name4
+        from t_product p LEFT JOIN t_type t on p.type_id = t.id LEFT JOIN t_brand_topics b on p.bra_to_id = b.id LEFT JOIN t_thems th on p.thems_id = th.id
+        LEFT JOIN t_drug d on p.drug_id = d.id where p.id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="productMap">
+        select p.*,t.id as id1,t.name as name1,b.id as id2,b.name as name2,th.id as id3,th.name as name3,d.id as id4,d.name as name4
+        from t_product p LEFT JOIN t_type t on p.type_id = t.id LEFT JOIN t_brand_topics b on p.bra_to_id = b.id LEFT JOIN t_thems th on p.thems_id = th.id
+        LEFT JOIN t_drug d on p.drug_id = d.id
+    </select>
+
+
+</mapper>

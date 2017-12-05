@@ -1,0 +1,107 @@
+[
+  {
+    "name": "用户管理",
+    "iconCls": " icon-group",
+    "href": "",
+    "children": [
+      {
+        "name": "用户信息",
+        "iconCls": "icon-group_edit",
+        "href": "/kfsy_zhanghb/back/user/main.jsp"
+      },{
+        "name": "用户地址",
+        "iconCls": "icon-folder_user",
+        "href": "/kfsy_zhanghb/back/address/address.jsp"
+      },{
+        "name": "优惠管理",
+        "iconCls": "icon-group_link",
+        "href": "/kfsy_zhanghb/back/priviu/main.jsp"
+      },{
+        "name": "用户统计",
+        "iconCls": "icon-group_link",
+        "href": "/kfsy_zhanghb/back/main/show.jsp"
+      }
+    ]
+  },{
+  "name": "商品管理",
+  "iconCls": "icon-databases",
+  "href": "",
+  "children": [
+    {
+      "name": "管理商品",
+      "iconCls": "icon-bricks",
+      "href": "/kfsy_zhanghb/back/product/main.jsp"
+    },{
+      "name": "轮播管理",
+      "iconCls": "icon-application_tile_horizontal",
+      "href": "/kfsy_zhanghb/back/pimage/showAll.jsp"
+    },{
+      "name": "商图管理",
+      "iconCls": "icon-application_side_list",
+      "href": ""
+    }]
+},{
+  "name": "药房管理",
+  "iconCls": "icon-house",
+  "href": "",
+  "children": [
+    {
+      "name": "药房管理",
+      "iconCls": "icon-hourglass_go",
+      "href": "/kfsy_zhanghb/back/drug/showAll.jsp"
+    },{
+      "name": "药房图片",
+      "iconCls": "icon-box",
+      "href": "/kfsy_zhanghb/back/image/showAll.jsp"
+    },{
+      "name": "营业执照",
+      "iconCls": "icon-box_picture",
+      "href": ""
+    }]
+},{
+  "name": "类别管理",
+  "iconCls": "icon-key",
+  "href": "",
+  "children": [
+    {
+      "name": "分类管理",
+      "iconCls": "icon-key",
+      "href": "/kfsy_zhanghb/back/type/showAll.jsp"
+    },{
+      "name": "主题管理",
+      "iconCls": "icon-key",
+      "href": "/kfsy_zhanghb/back/thems/showAll.jsp"
+    },{
+      "name": "品牌管理",
+      "iconCls": "icon-key",
+      "href": "/kfsy_zhanghb/back/brand/showAll.jsp"
+    }]
+},{
+  "id": "5",
+  "name": "订单管理",
+  "iconCls": "icon-man",
+  "href": "",
+  "children": [
+    {
+      "id": "01",
+      "name": "订单管理",
+      "iconCls": "icon-filter",
+      "href": "/kfsy_zhanghb/back/order/showAll.jsp"
+    }
+  ]
+},{
+  "name": "评论管理",
+  "iconCls": "icon-emoticon_grin",
+  "href": "",
+  "children": [
+    {
+      "name": "服务评论",
+      "iconCls": "icon-emoticon_tongue",
+      "href": "/kfsy_zhanghb/back/services/main.jsp"
+    },{
+      "name": "用户评论",
+      "iconCls": "icon-emoticon_wink",
+      "href": "/kfsy_zhanghb/back/comment/main.jsp"
+    }]
+}
+]

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.common.dao.PriviuDao">
+
+    <insert id="insert">
+        insert into t_privi_user
+        values(#{id},#{privi_id},#{num},#{userid},#{state})
+    </insert>
+
+    <update id="update">
+        update t_privi_user set num = #{num},state=#{state}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from t_privi_user
+        where id = #{id}
+    </delete>
+
+    <resultMap id="priviuResultMap" type="priviu">
+        <id property="id" column="id"/>
+        <result property="num" column="num"/>
+        <result property="userid" column="user_id"/>
+        <result property="state" column="state"/>
+        <result property="price" column="price"/>
+        <result property="name" column="name"/>
+        <result property="odate" column="odate"/>
+        <result property="ndate" column="ndate"/>
+        <result property="privi_id" column="privi_id"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="priviuResultMap">
+        select e.id,e.privi_id,e.num,e.user_id,e.state,`name`,p.price,p.odate,p.ndate
+        from t_privi_user e LEFT JOIN t_privi  p
+        on e.privi_id = p.id
+        where e.id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="priviuResultMap">
+        select e.id,e.privi_id,e.num,e.user_id,e.state,`name`,p.price,p.odate,p.ndate
+        from t_privi_user e LEFT JOIN t_privi  p
+        on e.privi_id = p.id
+    </select>
+
+    <select id="selectByUserid" resultMap="priviuResultMap">
+        select e.id,e.privi_id,e.num,e.user_id,e.state,`name`,p.price,p.odate,p.ndate
+        from t_privi_user e LEFT JOIN t_privi  p
+        on e.privi_id = p.id
+        where e.user_id = #{userid}
+    </select>
+</mapper>

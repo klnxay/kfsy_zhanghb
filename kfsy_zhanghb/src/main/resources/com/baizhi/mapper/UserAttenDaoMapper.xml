@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.common.dao.UserAttenDao">
+
+    <insert id="insert">
+        insert into t_user_atten
+        values(#{id},#{uid},#{pid})
+    </insert>
+
+    <update id="update">
+
+    </update>
+
+    <delete id="delete">
+        delete from t_user_atten where id = #{id}
+    </delete>
+
+    <resultMap type="userAtten" id="userAttenResultMap">
+        <id property="id" column="id"/>
+        <result property="uid" column="user_id"/>
+        <result property="pid" column="pro_id"/>
+    </resultMap>
+    
+    <select id="selectAll" resultMap="userAttenResultMap">
+        select * from t_user_atten
+    </select>
+
+    <select id="selectById" resultMap="userAttenResultMap">
+        select * from t_user_atten
+        where id = #{id}
+    </select>
+
+    <select id="selectByUserid" resultMap="userAttenResultMap">
+        select * from t_user_atten
+        where user_id = #{uid}
+    </select>
+</mapper>

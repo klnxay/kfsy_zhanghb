@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.common.dao.AddressDao">
+
+
+    <insert id="insert">
+        insert into t_address values(#{id},#{address},#{name},#{sex},#{addr},#{userid})
+    </insert>
+
+    <update id="update">
+        update t_address set address = #{address},name=#{name},sex = #{sex},addr=#{addr}，userid = #{userid} where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from t_address
+        where id = #{id}
+    </delete>
+
+    <select id="selectById" resultType="address">
+        select * from t_address
+        where id = #{id}
+    </select>
+
+    <select id="selectByUserid" resultType="address">
+        select * from t_address
+        where userid = #{userid}
+    </select>
+
+    <select id="selectAll" resultType="address">
+        select * from t_address
+    </select>
+
+
+</mapper>

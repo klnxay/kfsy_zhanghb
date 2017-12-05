@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.common.dao.ServicesDao">
+
+    <insert id="insert">
+        insert into t_service
+        values(#{id},#{name},#{count})
+    </insert>
+
+    <update id="update">
+        update t_service set count=#{count}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from t_service
+        where id = #{id}
+    </delete>
+
+    <select id="selectById" resultType="services">
+        select * from t_service
+        where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="services">
+        select * from t_service
+    </select>
+
+    <select id="selectByName" resultType="services">
+        select * from t_service
+        where name = #{name}
+    </select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.common.dao.CommentDao">
+
+    <insert id="insert">
+        insert into t_comment
+        values(#{id},#{content},#{date},#{grade},#{orderid},#{name},#{serviceid})
+    </insert>
+
+    <delete id="delete">
+        delete from t_comment
+        where id = #{id}
+    </delete>
+
+    <resultMap id="commentResultMap" type="comment">
+        <id property="id" column="id" />
+        <result property="content" column="content"/>
+        <result property="date" column="date"/>
+        <result property="grade" column="grade"/>
+        <result property="name" column="name"/>
+        <result property="names" column="names"/>
+        <result property="orderid" column="order_id"/>
+        <result property="serviceid" column="service_id"/>
+    </resultMap>
+    
+    <select id="selectById" resultMap="commentResultMap">
+        select c.id,c.content,c.date,c.grade,c.`name`,c.order_id,c.service_id,s.name as 'names'
+        from t_comment c LEFT JOIN t_service s
+        on c.service_id = s.id
+        where c.id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="commentResultMap">
+        select c.id,c.content,c.date,c.grade,c.name,c.order_id,c.service_id,s.name as 'names'
+        from t_comment c LEFT JOIN t_service s
+        on c.service_id = s.id
+    </select>
+    
+    <select id="selectByServices" resultMap="commentResultMap">
+        select c.id,c.content,c.date,c.grade,c.name,c.order_id,c.service_id,s.name as 'names'
+        from t_comment c LEFT JOIN t_service s
+        on c.service_id = s.id
+        where c.service_id = #{seid}
+    </select>
+
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*)
+        from t_comment c LEFT JOIN t_service s
+        on c.service_id = s.id
+        where c.service_id = #{seid}
+    </select>
+</mapper>
